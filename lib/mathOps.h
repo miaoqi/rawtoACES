@@ -477,9 +477,9 @@ vector <T> interp1DLinear ( const vector <int> & X0,
     
     vector <T> slope, intercept, Y1;
     
-    FORI(X0.size()-1) {
-        slope.push_back((Y0[i+1] - Y0[i]) / (X0[i+1] - X0[i]));
-        intercept.push_back(Y0[i] - X0[i] * slope[i]);
+    FORI ( X0.size() - 1 ) {
+        slope.push_back ( (Y0[i+1] - Y0[i]) / (X0[i+1] - X0[i]) );
+        intercept.push_back ( Y0[i] - X0[i] * slope[i] );
     }
     
     slope.push_back (slope.back());

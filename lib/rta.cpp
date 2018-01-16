@@ -169,10 +169,6 @@ namespace rta {
                     if ( wavs.back() == 550 )
                         _index = cell.second.get_value<double>();
                 }
-                
-//                printf ( "\"%i\": [ %18.13f ], \n",
-//                         wavs[wavs.size()-1],
-//                        _bestIllum._data[_bestIllum.data.size()-1] );
             }
             
             _inc = dis;
@@ -593,12 +589,6 @@ namespace rta {
                 if (tmp_sen._GSen > max[1]) max[1] = tmp_sen._GSen;
                 if (tmp_sen._BSen > max[2]) max[2] = tmp_sen._BSen;
                 
-//                printf( "\"%i\": [ %18.13f,  %18.13f,  %18.13f ], \n",
-//                        wavs[wavs.size()-1],
-//                        data[0],
-//                        data[1],
-//                        data[2] );
-//                
                 rgbsen.push_back(tmp_sen);
             }
             setWLIncrement(inc);

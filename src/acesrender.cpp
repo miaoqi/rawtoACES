@@ -642,7 +642,7 @@ void AcesRender::gatherSupportedIllums ( ) {
 
 void AcesRender::gatherSupportedCameras ( ) {
     
-    if (_cameras.size() != 0)
+    if ( _cameras.size() != 0 )
         _cameras.clear();
     
     std::unordered_map < string, int > record;
