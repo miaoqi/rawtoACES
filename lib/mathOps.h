@@ -482,8 +482,8 @@ vector <T> interp1DLinear ( const vector <int> & X0,
         intercept.push_back(Y0[i] - X0[i] * slope[i]);
     }
     
-    slope.push_back(slope[slope.size()-1]);
-    intercept.push_back(intercept[intercept.size()-1]);
+    slope.push_back (slope.back());
+    intercept.push_back (intercept.back());
     
     FORI(X1.size()) {
         int index  = findIndexInterp1(X1[i], X0, int(X0.size()));

@@ -151,22 +151,22 @@ namespace rta {
                 if ( wavs.size() == 2 )
                     dis = wavs[1] - wavs[0];
                 else if ( wavs.size() > 2 &&
-                         wavs[wavs.size()-1] - wavs[wavs.size()-2] != dis ) {
+                          wavs.back() - wavs[wavs.size()-2] != dis ) {
                     fprintf ( stderr, "Please double check the Light "
                                       "Source data (e.g. the increment "
                                       "should be uniform from 380nm to 780nm).\n" );
                     exit(-1);
                 }
                 
-                if ( wavs[wavs.size()-1] < 380 ||
-                    wavs[wavs.size()-1] % 5 )
+                if ( wavs.back() < 380 ||
+                    wavs.back() % 5 )
                     continue;
-                else if ( wavs[wavs.size()-1] > 780 )
+                else if ( wavs.back()> 780 )
                     break;
                 
                 BOOST_FOREACH ( ptree::value_type &cell, row.second ) {
                     _data.push_back(cell.second.get_value<double>());
-                    if ( wavs[wavs.size()-1] == 550 )
+                    if ( wavs.back() == 550 )
                         _index = cell.second.get_value<double>();
                 }
                 
@@ -287,7 +287,7 @@ namespace rta {
             if ( index >= 380 && index <= 780 ) {
                 _data.push_back(s01[i] + m1 * s11[i] + m2 * s21[i]);
                 if ( index == 550 )
-                    _index = _data[_data.size()-1];
+                    _index = _data.back();
             }
         }
         
@@ -567,17 +567,17 @@ namespace rta {
                 if ( wavs.size() == 2 )
                     inc = wavs[1] - wavs[0];
                 else if ( wavs.size() > 2 &&
-                         wavs[wavs.size()-1] - wavs[wavs.size()-2] != inc ) {
+                          wavs.back() - wavs[wavs.size()-2] != inc ) {
                     fprintf ( stderr, "Please double check the Camera "
                                       "Sensitivity data (e.g. the increment "
                                       "should be uniform from 380nm to 780nm).\n" );
                     exit(1);
                 }
                 
-                if ( wavs[wavs.size()-1] < 380 ||
-                    wavs[wavs.size()-1] % 5 )
+                if ( wavs.back() < 380 ||
+                    wavs.back() % 5 )
                     continue;
-                else if ( wavs[wavs.size()-1] > 780 )
+                else if ( wavs.back() > 780 )
                     break;
                 
                 vector < double > data;
