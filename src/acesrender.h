@@ -57,7 +57,7 @@
 
 #include "../lib/rta.h"
 
-#ifndef __aces_oeWriter__
+#ifndef __aces_Writer__
 #include <aces/aces_Writer.h>
 #endif
 
@@ -90,13 +90,13 @@ class AcesRender {
     
         int openRawPath ( const char * pathToRaw );
         int unpack ( const char * pathToRaw );
-        int dcraw ( );
+        int dcraw ();
     
         int prepareIDT ( const libraw_iparams_t & P, float * M );
         int prepareWB ( const libraw_iparams_t & P );
         int preprocessRaw ( const char * path );
-        int postprocessRaw ( );
-        void outputACES ( );
+        int postprocessRaw ();
+        void outputACES ();
     
         void initialize ( const dataPath & dp );
         void setPixels ( libraw_processed_image_t * image );
@@ -125,7 +125,6 @@ class AcesRender {
         AcesRender();
         ~AcesRender();
         static AcesRender & getPrivateInstance();
-    
         const AcesRender & operator=( const AcesRender & acesrender );
     
         char * _pathToRaw;

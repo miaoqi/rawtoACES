@@ -142,7 +142,7 @@ struct Option {
     
     char * illumType;
     float scale;
-    vector <string> envPaths;
+    vector < string > envPaths;
     
 #ifndef WIN32
     void *iobuffer;

@@ -118,56 +118,56 @@ void usage ( const char *prog ) {
     printf ( "  %s --help\n", prog );
     printf ( "  %s --version\n", prog );
     printf ( "\n");
-    printf ("IDT options:\n"
-            "  --help                  Show this screen\n"
-            "  --version               Show version\n"
-            "  --wb-method [0-4]       White balance factor calculation method\n"
-            "                            0=white balance using file metadata \n"
-            "                            1=white balance using user specified illuminant [str] \n"
-            "                            2=Average the whole image for white balance\n"
-            "                            3=Average a grey box for white balance <x y w h>\n"
-            "                            4=Use custom white balance  <r g b g>\n"
-            "                            (default = 0)\n"
-            "  --mat-method [0-2]      IDT matrix calculation method\n"
-            "                            0=Calculate matrix from camera spec sens\n"
-            "                            1=Use file metadata color matrix\n"
-            "                            2=Use adobe coeffs included in libraw\n"
-            // Future feature ? "        3=Use custom matrix <m1r m1g m1b m2r m2g m2b m3r m3g m3b>\n"
-            "                            (default = 0)\n"
-            "                            (default = /usr/local/include/rawtoaces/data/camera)\n"
-            "  --headroom float        Set highlight headroom factor (default = 6.0)\n"
-            "  --cameras               Show a list of supported cameras/models by LibRaw\n"
-            "  --valid-illums          Show a list of illuminants\n"
-            "  --valid-cameras         Show a list of cameras/models with available\n"
-            "                          spectral sensitivity datasets\n"
-            "\n"
-            "Raw conversion options:\n"
-            "  -c float                Set adjust maximum threshold (default = 0.75)\n"
-            "  -C <r b>                Correct chromatic aberration\n"
-            "  -P <file>               Fix the dead pixels listed in this file\n"
-            "  -K <file>               Subtract dark frame (16-bit raw PGM)\n"
-            "  -k <num>                Set the darkness level\n"
-            "  -S <num>                Set the saturation level\n"
-            "  -n <num>                Set threshold for wavelet denoising\n"
-            "  -H [0-9]                Highlight mode (0=clip, 1=unclip, 2=blend, 3+=rebuild) (default = 0)\n"
-            "  -t [0-7]                Flip image (0=none, 3=180, 5=90CCW, 6=90CW)\n"
-            "  -j                      Don't stretch or rotate raw pixels\n"
-            "  -W                      Don't automatically brighten the image\n"
-            "  -b <num>                Adjust brightness (default = 1.0)\n"
-            "  -q [0-3]                Set the interpolation quality\n"
-            "  -h                      Half-size color image (twice as fast as \"-q 0\")\n"
-            "  -f                      Interpolate RGGB as four colors\n"
-            "  -m <num>                Apply a 3x3 median filter to R-G and B-G\n"
-            "  -s [0..N-1]             Select one raw image from input file\n"
-            "  -G                      Use green_matching() filter\n"
-            "  -B <x y w h>            Use cropbox\n"
-            "\n"
-            "Benchmarking options:\n"
-            "  -v                      Verbose: print progress messages (repeated -v will add verbosity)\n"
-            "  -F                      Use FILE I/O instead of streambuf API\n"
-            "  -d                      Detailed timing report\n"
+    printf ( "IDT options:\n"
+             "  --help                  Show this screen\n"
+             "  --version               Show version\n"
+             "  --wb-method [0-4]       White balance factor calculation method\n"
+             "                            0=white balance using file metadata \n"
+             "                            1=white balance using user specified illuminant [str] \n"
+             "                            2=Average the whole image for white balance\n"
+             "                            3=Average a grey box for white balance <x y w h>\n"
+             "                            4=Use custom white balance  <r g b g>\n"
+             "                            (default = 0)\n"
+             "  --mat-method [0-2]      IDT matrix calculation method\n"
+             "                            0=Calculate matrix from camera spec sens\n"
+             "                            1=Use file metadata color matrix\n"
+             "                            2=Use adobe coeffs included in libraw\n"
+             // Future feature ? "        3=Use custom matrix <m1r m1g m1b m2r m2g m2b m3r m3g m3b>\n"
+             "                            (default = 0)\n"
+             "                            (default = /usr/local/include/rawtoaces/data/camera)\n"
+             "  --headroom float        Set highlight headroom factor (default = 6.0)\n"
+             "  --cameras               Show a list of supported cameras/models by LibRaw\n"
+             "  --valid-illums          Show a list of illuminants\n"
+             "  --valid-cameras         Show a list of cameras/models with available\n"
+             "                          spectral sensitivity datasets\n"
+             "\n"
+             "Raw conversion options:\n"
+             "  -c float                Set adjust maximum threshold (default = 0.75)\n"
+             "  -C <r b>                Correct chromatic aberration\n"
+             "  -P <file>               Fix the dead pixels listed in this file\n"
+             "  -K <file>               Subtract dark frame (16-bit raw PGM)\n"
+             "  -k <num>                Set the darkness level\n"
+             "  -S <num>                Set the saturation level\n"
+             "  -n <num>                Set threshold for wavelet denoising\n"
+             "  -H [0-9]                Highlight mode (0=clip, 1=unclip, 2=blend, 3+=rebuild) (default = 0)\n"
+             "  -t [0-7]                Flip image (0=none, 3=180, 5=90CCW, 6=90CW)\n"
+             "  -j                      Don't stretch or rotate raw pixels\n"
+             "  -W                      Don't automatically brighten the image\n"
+             "  -b <num>                Adjust brightness (default = 1.0)\n"
+             "  -q [0-3]                Set the interpolation quality\n"
+             "  -h                      Half-size color image (twice as fast as \"-q 0\")\n"
+             "  -f                      Interpolate RGGB as four colors\n"
+             "  -m <num>                Apply a 3x3 median filter to R-G and B-G\n"
+             "  -s [0..N-1]             Select one raw image from input file\n"
+             "  -G                      Use green_matching() filter\n"
+             // "  -B <x y w h>            Use cropbox\n"
+             "\n"
+             "Benchmarking options:\n"
+             "  -v                      Verbose: print progress messages (repeated -v will add verbosity)\n"
+             "  -F                      Use FILE I/O instead of streambuf API\n"
+             "  -d                      Detailed timing report\n"
 #ifndef WIN32
-            "  -E                      Use mmap()-ed buffer instead of plain FILE I/O\n"
+             "  -E                      Use mmap()-ed buffer instead of plain FILE I/O\n"
 #endif
             );
     exit(-1);
@@ -275,11 +275,11 @@ AcesRender & AcesRender::getPrivateInstance(){
 
 const AcesRender & AcesRender::operator=( const AcesRender & acesrender ) {
     if ( this != &acesrender ) {
-        clearVM(_idtm);
-        clearVM(_catm);
-        clearVM(_wbv);
-        clearVM(_illuminants);
-        clearVM(_cameras);
+        clearVM ( _idtm );
+        clearVM ( _catm );
+        clearVM ( _wbv );
+        clearVM ( _illuminants );
+        clearVM ( _cameras );
         
         if ( _idt != nullptr )
             delete _idt;
@@ -411,6 +411,8 @@ int AcesRender::configureSettings ( int argc, char * argv[] )
             exit(-1);
         }
         
+        // sp is the pointer "HocnbksStqmBC", it points to 'H'
+        // cp is the pointer that points to the first occurrence of 'opt'
         if (( cp = strchr ( sp = (char*)"HcnbksStqmBC", opt )) != 0 ) {
             for (int i=0; i < "111111111142"[cp-sp]-'0'; i++) {
                 if (!isdigit(argv[arg+i][0]))
@@ -596,8 +598,9 @@ void AcesRender::setPixels ( libraw_processed_image_t * image ) {
 
 void AcesRender::gatherSupportedIllums ( ) {
     
-    if (_illuminants.size() != 0)
-        _illuminants.clear();
+    if ( _illuminants.size() != 0 )
+        clearVM ( _illuminants );
+        // _illuminants.clear();
     
     _illuminants.push_back( "Day-light (e.g., D60, D6025)" );
     _illuminants.push_back( "Blackbody (e.g., 3200K)" );
@@ -1087,7 +1090,7 @@ int AcesRender::postprocessRaw ( ) {
             if ( _opts.verbosity > 1 ) {
                 printf ( "White Balance calculation method is 2 - ");
                 printf ( "Using white balance factors calculate by "
-                        "averaging the entire image ...\n" );
+                         "averaging the entire image ...\n" );
             }
             
             break;
@@ -1097,7 +1100,7 @@ int AcesRender::postprocessRaw ( ) {
             if ( _opts.verbosity > 1 ) {
                 printf ( "White Balance calculation method is 3 - ");
                 printf ( "Using white balance factors calculated by "
-                     "averaging a grey box ...\n" );
+                         "averaging a grey box ...\n" );
             }
             
             break;
@@ -1252,22 +1255,22 @@ void AcesRender::outputACES ( ) {
     float * aces = renderACES();
     if ( _opts.verbosity > 1 ) {
         if ( _opts.mat_method && !P.dng_version ) {
-            vector < vector < double > > camXYZ(3, vector< double >(3, 1.0));
+            vector < vector < double > > camXYZ ( 3, vector< double >(3, 1.0) );
             FORIJ (3,3) camXYZ[i][j] = C.cam_xyz[i][j];
-            vector < vector < double > > camcat = mulVector (camXYZ, _catm);
+            vector < vector < double > > camcat = mulVector ( camXYZ, _catm );
             
             printf ("The Approximate IDT matrix is ...\n");
-            FORI (3) printf ("   %f, %f, %f\n", camcat[i][0], camcat[i][1], camcat[i][2]);
+            FORI (3) printf ( "   %f, %f, %f\n", camcat[i][0], camcat[i][1], camcat[i][2] );
         }
         // printing white balance coefficients
-        printf ("The final white balance coefficients are ...\n");
-        printf ("   %f   %f   %f\n", C.pre_mul[0], C.pre_mul[1], C.pre_mul[2]);
+        printf ( "The final white balance coefficients are ...\n" );
+        printf ( "   %f   %f   %f\n", C.pre_mul[0], C.pre_mul[1], C.pre_mul[2] );
         printf ( "Writing ACES file to %s ...\n", outfn );
     }
     
     if ( _opts.highlight > 0 ) {
-        float ratio = ( *(std::max_element ( C.pre_mul, C.pre_mul+3)) /
-                        *(std::min_element ( C.pre_mul, C.pre_mul+3)) );
+        float ratio = ( * ( std::max_element ( C.pre_mul, C.pre_mul+3) ) /
+                        * ( std::min_element ( C.pre_mul, C.pre_mul+3) ) );
         acesWrite ( outfn, aces, ratio );
     }
     else

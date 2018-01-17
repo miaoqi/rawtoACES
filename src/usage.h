@@ -62,22 +62,20 @@ int my_progress_callback ( void *d,
 {
     char * passed  = ( char* ) (d ? d:"default string");
     
-    printf ("CB: %s  pass %d of %d (data passed=%s)\n",
-            libraw_strprogress(p),
-            iteration,
-            expected,
-            passed );
+    printf ( "CB: %s  pass %d of %d (data passed=%s)\n",
+             libraw_strprogress(p),
+             iteration,
+             expected,
+             passed );
     
     if ( iteration == 0 )
         printf ( "start_timevaling %s (expecting %d iterations)\n",
                  libraw_strprogress(p),
                  expected );
-    else if (iteration == expected-1)
+    else if ( iteration == expected - 1 )
         printf ( "%s finished\n",
                  libraw_strprogress(p) );
-    
-    ///    if(++cnt>10) return 1;
-    
+
     return 0;
 };
 
