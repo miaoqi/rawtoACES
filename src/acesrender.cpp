@@ -575,17 +575,16 @@ int AcesRender::configureSettings ( int argc, char * argv[] )
 //      N/A        : _image will point to the address of image
 
 void AcesRender::setPixels ( libraw_processed_image_t * image ) {
-    assert(image);
+    assert (image);
     if ( _image != nullptr ) delete _image;
     _image = image;
 
 ////    Strange because memcpying on libraw_processed_image_t
 //    will generate an error
 //    if (_image != nullptr ) delete _image;
-//    _image = (libraw_processed_image_t *) malloc(sizeof(libraw_processed_image_t));
-//    memcpy(_image, image, sizeof(libraw_processed_image_t));
+//    _image = ( libraw_processed_image_t * ) malloc ( sizeof (libraw_processed_image_t ) );
+//    memcpy ( _image, image, sizeof ( libraw_processed_image_t ) );
 }
-
 
 //	=====================================================================
 //	Gather supported Illuminants by reading from JSON files
@@ -600,7 +599,6 @@ void AcesRender::gatherSupportedIllums ( ) {
     
     if ( _illuminants.size() != 0 )
         clearVM ( _illuminants );
-        // _illuminants.clear();
     
     _illuminants.push_back( "Day-light (e.g., D60, D6025)" );
     _illuminants.push_back( "Blackbody (e.g., 3200K)" );
@@ -981,7 +979,6 @@ int AcesRender::dcraw ( ) {
 
     return _opts.ret;
 }
-
 
 //  =====================================================================
 //  Preprocess the RAW file based on the path to the file
