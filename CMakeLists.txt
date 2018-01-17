@@ -229,7 +229,7 @@ link_directories( ${AcesContainer_LIBRARY_DIRS} )
 include_directories( ${CERES_INCLUDE_DIRS} )
 
 add_executable( rawtoaces
-    main.cpp
+    rawtoaces.cpp
 )
 
 target_link_libraries(rawtoaces ${RAWTOACESLIB} ${libraw_LIBRARIES} ${libraw_LDFLAGS_OTHER} )
