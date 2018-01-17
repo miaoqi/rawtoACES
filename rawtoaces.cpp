@@ -74,7 +74,7 @@ int main ( int argc, char *argv[] )
 
 // Gather all the raw images from arg list
     vector < string > RAWs;
-    for ( ; arg < argc; arg++ ) {
+    for ( ; arg < argc; ++arg ) {
         if ( stat ( argv[arg], &st ) != 0 ) {
             fprintf ( stderr, "Error: The directory or file may not exist - \"%s\"...",
                               argv[arg]);

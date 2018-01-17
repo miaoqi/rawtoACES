@@ -385,7 +385,7 @@ namespace rta {
         _increment = 5;
         _spstMaxCol = -1;
         
-        for (int i=0; i<81; i++) {
+        FORI (81) {
             _rgbsen.push_back( RGBSen() );
         }
     }
@@ -1522,8 +1522,8 @@ namespace rta {
         
         double mired;
         double RDthis = 0.0, RDprevious = 0.0;
-        
-        for ( i = 0; i < Nrobert; i++ ) {
+
+        for ( i = 0; i < Nrobert; ++i ) {
             vector < double > robertson ( Robertson_uvtTable[i],
                                           Robertson_uvtTable[i] + countSize(Robertson_uvtTable[i]) );
             if (( RDthis = robertsonLength ( uv, robertson ) ) <= 0.0 )
@@ -1619,7 +1619,7 @@ namespace rta {
         int Nrobert = countSize (Robertson_uvtTable);
         int i;
         
-        for ( i = 0; i < Nrobert; i++ ) {
+        for ( i = 0; i < Nrobert; ++i ) {
             if ( RobertsonMired[i] >= mired )
                 break;
         }

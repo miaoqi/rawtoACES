@@ -309,9 +309,9 @@ vector < T > mulVector ( vector < T > vct1, vector < T > vct2, int k = 3 )
     T * pB = &vct2[0];
     T * pC = &vct3[0];
     
-    for ( int r = 0; r < rows; r++ ) {
-        for ( int cArB = 0; cArB < k; cArB++ ) {
-            for ( int c = 0; c < cols; c++ ) {
+    for ( int r = 0; r < rows; ++r ) {
+        for ( int cArB = 0; cArB < k; ++cArB ) {
+            for ( int c = 0; c < cols; ++c ) {
                 pC[r * cols + c] += pA[r * k + cArB] * pB[cArB * cols + c];
             }
         }

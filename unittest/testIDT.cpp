@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE( TestIDT_DataAccess ) {
     model3[len] = '\0';
     
     vector < RGBSen > rgbsen1, rgbsen2, rgbsen3;
-    for (int i=0; i<81; i++) {
+    FORI (81) {
         rgbsen1.push_back( RGBSen( 1.00000001, 1.0, 0.999999999 ) );
         rgbsen2.push_back( RGBSen( 1.0, 1.0, 1.0) );
         rgbsen3.push_back( RGBSen( -0.9999999999999, 1e-3, 1.0000000000001) );

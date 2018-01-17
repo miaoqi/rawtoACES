@@ -104,10 +104,10 @@
 #endif
 
 #define sign(x)		((x) > 0 ? 1 : ( (x) < 0 ? (0-1) : 0))
-#define FORI(val) for (int i=0; i < val; i++)
-#define FORJ(val) for (int j=0; j < val; j++)
-#define FORIJ(val1, val2) for (int i=0; i < val1; i++) for (int j=0; j < val2; j++)
-#define countSize(a)    (  static_cast<int> (sizeof(a) / sizeof((a)[0])) )
+#define FORI(val) for (int i=0; i < val; ++i)
+#define FORJ(val) for (int j=0; j < val; ++j)
+#define FORIJ(val1, val2) for (int i=0; i < val1; ++i) for (int j=0; j < val2; ++j)
+#define countSize(a)    (  static_cast<int> (sizeof(a) / sizeof(a[0])) )
 
 typedef float  float32_t;
 typedef double float64_t;

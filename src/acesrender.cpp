@@ -399,7 +399,7 @@ int AcesRender::configureSettings ( int argc, char * argv[] )
             break;
         }
         
-        arg++;
+        arg += 1;
 
         static unordered_map < string, char > keys;
         create_key ( keys );
@@ -414,8 +414,8 @@ int AcesRender::configureSettings ( int argc, char * argv[] )
         // sp is the pointer "HocnbksStqmBC", it points to 'H'
         // cp is the pointer that points to the first occurrence of 'opt'
         if (( cp = strchr ( sp = (char*)"HcnbksStqmBC", opt )) != 0 ) {
-            for (int i=0; i < "111111111142"[cp-sp]-'0'; i++) {
-                if (!isdigit(argv[arg+i][0]))
+            for ( int i=0; i < "111111111142"[cp-sp]-'0'; ++i ) {
+                if ( !isdigit(argv[arg+i][0]) )
                 {
                     fprintf ( stderr, "\nError: Non-numeric argument to "
                                       "\"%s\"\n", key.c_str() );
@@ -428,7 +428,7 @@ int AcesRender::configureSettings ( int argc, char * argv[] )
         {
             case 'I':  usage( argv[0] );  break;
             case 'V':  printf ( "%s\n", VERSION );  break;
-            case 'v':  _opts.verbosity++;  break;
+            case 'v':  _opts.verbosity += 1;  break;
             case 'G':  OUT.green_matching = 1; break;
             case 'c':  OUT.adjust_maximum_thr   = (float)atof(argv[arg++]);  break;
             case 'n':  OUT.threshold   = (float)atof(argv[arg++]);  break;
