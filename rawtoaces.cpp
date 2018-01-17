@@ -55,7 +55,7 @@
 #include "src/acesrender.h"
 #include "src/usage.h"
 
-int main(int argc, char *argv[])
+int main ( int argc, char *argv[] )
 {
     if ( argc == 1 ) usage( argv[0] );
     
@@ -63,28 +63,28 @@ int main(int argc, char *argv[])
     AcesRender & Render = AcesRender::getInstance();
     
 #ifndef WIN32
-  putenv ((char*)"TZ=UTC");
+    putenv ( ( char* )"TZ=UTC" );
 #else
-  _putenv ((char*)"TZ=UTC");
+    _putenv ( ( char* )"TZ=UTC" );
 #endif
 
 // Fetch conditions and conduct some pre-processing
     Render.initialize ( pathsFinder() );
-    int arg = Render.configureSettings (argc, argv);
+    int arg = Render.configureSettings ( argc, argv );
 
 // Gather all the raw images from arg list
     vector < string > RAWs;
     for ( ; arg < argc; arg++ ) {
-        if( stat( argv[arg], &st) != 0 ) {
+        if ( stat ( argv[arg], &st ) != 0 ) {
             fprintf ( stderr, "Error: The directory or file may not exist - \"%s\"...",
                               argv[arg]);
             continue;
         }
-        
         if ( st.st_mode & S_IFDIR ) {
-            vector <string> files = openDir ( static_cast< string >( argv[arg] ) );
-            for ( vector <string>::iterator file = files.begin( ); file != files.end( ); ++file ) {
-                if ( stat( file->c_str(), &st) == 0 &&
+            vector < string > files = openDir ( static_cast< string >( argv[arg] ) );
+            vector < string >::iterator file = files.begin();
+            for ( ; file != files.end(); ++file ) {
+                if ( stat ( file->c_str(), &st) == 0 &&
                     ( st.st_mode & S_IFREG ) )
                     RAWs.push_back ( *file );
             }
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
     else
         read = Render.fetchIlluminant( opts.illumType );
     
-    if( !read ) {
+    if ( !read ) {
         fprintf( stderr, "\nError: No matching light source. "
                          "Please find available options by "
                          "\"rawtoaces --valid-illum\".\n");
