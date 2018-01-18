@@ -3,7 +3,6 @@
         "schema_version"         : "0.1.0",
         "manufacturer"           : "nikon",
         "model"                  : "d7000",
-        "catalog_number"         : "camera_nikon_d7000_0.1.0",
         "description"            : "camera spectral sensitivity data",
         "document_creator"       : "scitech",
         "unique_identifier"      : "b268d09a-dac6-463a-9392-c8f67750390c",

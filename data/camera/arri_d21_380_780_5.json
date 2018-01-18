@@ -3,7 +3,6 @@
         "schema_version"         : "0.1.0",
         "manufacturer"           : "arri",
         "model"                  : "d21",
-        "catalog_number"         : "camera_arri_d21_0.1.0",
         "description"            : "camera spectral sensitivity data",
         "document_creator"       : "scitech",
         "unique_identifier"      : "170ad0e6-95d8-45de-a172-7e783b865c85",

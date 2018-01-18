@@ -3,7 +3,6 @@
         "schema_version"         : "0.1.0",
         "manufacturer"           : "nikon",
         "model"                  : "d200",
-        "catalog_number"         : "camera_nikon_d200_0.1.0",
         "description"            : "camera spectral sensitivity data",
         "document_creator"       : "scitech",
         "unique_identifier"      : "d061ecbd-9221-473e-8fb9-6e78ef4a238d",

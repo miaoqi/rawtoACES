@@ -3,7 +3,6 @@
         "schema_version"         : "0.1.0",
         "manufacturer"           : "canon",
         "model"                  : "eos 5d mark ii",
-        "catalog_number"         : "camera_canon_eos_5d_mark_ii_0.1.0",
         "description"            : "camera spectral sensitivity data",
         "document_creator"       : "scitech",
         "unique_identifier"      : "ddac1845-debf-44b6-9113-e4859165995a",

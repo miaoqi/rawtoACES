@@ -3,7 +3,6 @@
         "schema_version"         : "0.1.0",
         "manufacturer"           : "nikon",
         "model"                  : "d70",
-        "catalog_number"         : "camera_nikon_d70_0.1.0",
         "description"            : "camera spectral sensitivity data",
         "document_creator"       : "scitech",
         "unique_identifier"      : "57733697-1626-4e37-8666-9323390c5004",
