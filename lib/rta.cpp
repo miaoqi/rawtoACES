@@ -186,7 +186,7 @@ namespace rta {
             exit(1);
         }
         
-        return 1;
+        return RTA_SUCCESS;
     }
 
     //	=====================================================================
@@ -546,11 +546,11 @@ namespace rta {
             read_json ( path, pt );
             
             const char * cmaker = (pt.get<string>( "header.manufacturer" )).c_str();
-            if ( cmp_str(maker, cmaker) ) return 0;
+            if ( cmp_str(maker, cmaker) ) return !RTA_SUCCESS;
             setBrand(cmaker);
             
             const char * cmodel = (pt.get<string>( "header.model" )).c_str();
-            if ( cmp_str(model, cmodel) ) return 0;
+            if ( cmp_str(model, cmodel) ) return !RTA_SUCCESS;
             setModel(cmodel);
             
             vector <int> wavs;
@@ -610,7 +610,7 @@ namespace rta {
         _spstMaxCol = max_element (max.begin(), max.end()) - max.begin();
         setSensitivity (rgbsen);
         
-        return 1;
+        return RTA_SUCCESS;
     }
     
     //	=====================================================================
@@ -814,7 +814,7 @@ namespace rta {
                 illumDay.calDayLightSPD(atoi(type.substr(1).c_str()));
                 _Illuminants.push_back(illumDay);
                 
-                return 1;
+                return RTA_SUCCESS;
             }
             // Blackbody
             else if ( type[type.length()-1] == 'k' ){
@@ -823,7 +823,7 @@ namespace rta {
                 illumBB.calBlackBodySPD(atoi(type.substr(0, type.length()-1).c_str()));
                 _Illuminants.push_back(illumBB);
                 
-                return 1;
+                return RTA_SUCCESS;
 
             }
             else {
@@ -833,7 +833,7 @@ namespace rta {
                         type.compare(IllumJson._type) == 0 ) {
                             _Illuminants.push_back(IllumJson);
                         
-                            return 1;
+                            return RTA_SUCCESS;
                     }
                 }
             }
@@ -1277,12 +1277,12 @@ namespace rta {
                 FORI(3) printf("   %f %f %f\n", _idt[i][0], _idt[i][1], _idt[i][2]);
             }
             
-            return 1;
+            return RTA_SUCCESS;
         }
         
         delete cost_function;
         
-        return 0;
+        return !RTA_SUCCESS;
     }
     
     //	=====================================================================

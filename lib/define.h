@@ -103,6 +103,10 @@
 #define FALSE 0
 #endif
 
+#if !defined(RTA_SUCCESS)
+#define RTA_SUCCESS 1
+#endif
+
 #define sign(x)		((x) > 0 ? 1 : ( (x) < 0 ? (0-1) : 0))
 #define FORI(val) for (int i=0; i < val; ++i)
 #define FORJ(val) for (int j=0; j < val; ++j)

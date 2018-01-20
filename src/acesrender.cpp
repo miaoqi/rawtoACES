@@ -746,7 +746,7 @@ int AcesRender::openRawPath ( const char * pathToRaw ) {
     
     unpack ( pathToRaw );
     
-    return _opts.ret;
+    return _opts.ret == RTA_SUCCESS;
 }
 
 //	=====================================================================
@@ -768,7 +768,7 @@ int AcesRender::unpack ( const char * pathToRaw ) {
                            pathToRaw, libraw_strerror (_opts.ret) );
     }
     
-    return _opts.ret;
+    return _opts.ret == RTA_SUCCESS;
 }
 
 //	=====================================================================
@@ -804,7 +804,7 @@ int AcesRender::fetchCameraSenPath( const libraw_iparams_t & P )
         }
     }
     
-    return readC;
+    return readC == RTA_SUCCESS;
 }
 
 //	=====================================================================
@@ -885,10 +885,10 @@ int AcesRender::prepareIDT ( const libraw_iparams_t & P, float * M )
         _idtm = _idt->getIDT();
         _wbv = _idt->getWB();
     
-        return 1;
+        return RTA_SUCCESS;
     }
     
-    return 0;
+    return !RTA_SUCCESS;
 }
 
 
@@ -949,10 +949,10 @@ int AcesRender::prepareWB ( const libraw_iparams_t & P )
 
        _wbv = _idt->getWB();
 
-       return 1;
+       return RTA_SUCCESS;
     }
 
-    return 0;
+    return !RTA_SUCCESS;
 }
 
 //  =====================================================================
@@ -977,7 +977,7 @@ int AcesRender::dcraw ( ) {
             exit(1);
     }
 
-    return _opts.ret;
+    return _opts.ret == RTA_SUCCESS;
 }
 
 //  =====================================================================
@@ -1016,7 +1016,7 @@ int AcesRender::preprocessRaw ( const char * path ) {
     if ( openRawPath ( path ) )
         unpack ( path );
     
-    return _opts.ret;
+    return _opts.ret == RTA_SUCCESS;
 }
 
 //  =====================================================================
@@ -1196,7 +1196,7 @@ int AcesRender::postprocessRaw ( ) {
     libraw_processed_image_t * image = _rawProcessor->dcraw_make_mem_image ( &(_opts.ret) );
     setPixels (image);
     
-    return _opts.ret;
+    return _opts.ret == RTA_SUCCESS;
 }
 
 //	=====================================================================
