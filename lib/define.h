@@ -85,7 +85,6 @@
 #define FILEPATH ("/usr/local/include/rawtoaces/data/")
 
 #ifdef WIN32
-// suppress sprintf-related warning. sprintf() is permitted in sample code
 #include <string.h>
 #include <windows.h>
 #define snprintf _snprintf

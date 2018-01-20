@@ -126,7 +126,7 @@ namespace rta {
     //           will be filled and return 1; Otherwise, return 0
     
     int Illum::readSPD ( const string & path, const string & type ) {
-        assert(path.length() > 0 && type.length() > 0 );
+        assert ( path.length() > 0 && type.length() > 0 );
         
         try
         {
@@ -135,9 +135,8 @@ namespace rta {
             read_json ( path, pt );
             
             const string stype = pt.get<string>( "header.illuminant" );
-            if ( type.compare(stype) != 0
-                 && type.compare("na") != 0 )
-                return 0;
+            if ( type.compare(stype) != 0 && type.compare("na") != 0 )
+                return !RTA_SUCCESS;
             
             _type = stype;
             
@@ -150,8 +149,7 @@ namespace rta {
                 
                 if ( wavs.size() == 2 )
                     dis = wavs[1] - wavs[0];
-                else if ( wavs.size() > 2 &&
-                          wavs.back() - wavs[wavs.size()-2] != dis ) {
+                else if ( wavs.size() > 2 && wavs.back() - wavs[wavs.size()-2] != dis ) {
                     fprintf ( stderr, "Please double check the Light "
                                       "Source data (e.g. the increment "
                                       "should be uniform from 380nm to 780nm).\n" );
@@ -581,7 +579,7 @@ namespace rta {
                 data.push_back ( cell.second.get_value<double>() );
                 
                 // ensure there are three components
-                assert(data.size() == 3);
+                assert ( data.size() == 3 );
                 
                 RGBSen tmp_sen ( data[0], data[1], data[2] );
                 
@@ -786,7 +784,7 @@ namespace rta {
                               const char * maker,
                               const char * model ) {
         
-        return _cameraSpst.loadSpst (path, maker, model);
+        return _cameraSpst.loadSpst ( path, maker, model );
     }
     
     //	=====================================================================
@@ -864,7 +862,7 @@ namespace rta {
             }
         }
         
-        return (_Illuminants.size() > 0);
+        return ( _Illuminants.size() > 0 );
     }
     
     //	=====================================================================
