@@ -252,42 +252,42 @@ namespace rta {
         vector <double> xy = cctToxy (cctd);
         
         double m0 = 0.0241 + 0.2562*xy[0] - 0.7341*xy[1];
-        double m1 = (-1.3515 - 1.7703*xy[0] + 5.9114*xy[1]) / m0;
-        double m2 = (0.03000 - 31.4424*xy[0] + 30.0717*xy[1]) / m0;
+        double m1 = ( -1.3515 - 1.7703*xy[0] + 5.9114*xy[1] ) / m0;
+        double m2 = ( 0.03000 - 31.4424*xy[0] + 30.0717*xy[1] ) / m0;
         
         FORI (54) {
-            wls0.push_back(s_series[i].wl);
-            s00.push_back(s_series[i].RGB[0]);
-            s10.push_back(s_series[i].RGB[1]);
-            s20.push_back(s_series[i].RGB[2]);
+            wls0.push_back ( s_series[i].wl );
+            s00.push_back ( s_series[i].RGB[0] );
+            s10.push_back ( s_series[i].RGB[1] );
+            s20.push_back ( s_series[i].RGB[2] );
         }
         
-        int size = (s_series[53].wl - s_series[0].wl)/_inc + 1;
+        int size = ( s_series[53].wl - s_series[0].wl ) / _inc + 1;
         FORI(size)
-            wls1.push_back(s_series[0].wl + _inc*i);
+            wls1.push_back ( s_series[0].wl + _inc*i );
         
-        s01 = interp1DLinear(wls0, wls1, s00);
-        clearVM(s00);
-        s11 = interp1DLinear(wls0, wls1, s10);
-        clearVM(s10);
-        s21 = interp1DLinear(wls0, wls1, s20);
-        clearVM(s20);
+        s01 = interp1DLinear ( wls0, wls1, s00 );
+        clearVM (s00);
+        s11 = interp1DLinear ( wls0, wls1, s10 );
+        clearVM (s10);
+        s21 = interp1DLinear ( wls0, wls1, s20 );
+        clearVM (s20);
         
-        clearVM(wls0);
-        clearVM(wls1);
+        clearVM (wls0);
+        clearVM (wls1);
         
         FORI (size) {
             int index = s_series[0].wl + _inc * i;
             if ( index >= 380 && index <= 780 ) {
-                _data.push_back(s01[i] + m1 * s11[i] + m2 * s21[i]);
+                _data.push_back ( s01[i] + m1 * s11[i] + m2 * s21[i] );
                 if ( index == 550 )
                     _index = _data.back();
             }
         }
         
-        clearVM(s01);
-        clearVM(s11);
-        clearVM(s21);
+        clearVM (s01);
+        clearVM (s11);
+        clearVM (s21);
     }
 
     //	=====================================================================
