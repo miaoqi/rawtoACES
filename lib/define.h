@@ -352,9 +352,9 @@ inline vector < string > openDir ( string path = "." ) {
 };
 
 // Function to clear the memories occupied by vectors
-template<typename T>
+template < typename T >
 inline void clearVM ( vector<T> vct ) {
-    vector< T >().swap(vct);
+    vector < T >().swap(vct);
 };
 
 // Function to covert upper-case to lower-case

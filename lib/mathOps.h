@@ -66,13 +66,13 @@ inline double invertD ( double val ) {
     return 1.0/val;
 };
 
-template<typename T>
-T clip ( T val, T target ) {
+template < typename T >
+inline T clip ( T val, T target ) {
     return std::min(val, target);
 };
 
-template<typename T>
-int isSquare ( const vector < vector < T > > & vm ) {
+template < typename T >
+inline int isSquare ( const vector < vector < T > > & vm ) {
     FORI(vm.size()){
         if (vm[i].size() != vm.size())
             return 0;
@@ -81,8 +81,8 @@ int isSquare ( const vector < vector < T > > & vm ) {
     return 1;
 };
 
-template <typename T>
-vector < T > addVectors ( const vector < T > & vectorA, const vector < T > & vectorB ) {
+template < typename T >
+inline vector < T > addVectors ( const vector < T > & vectorA, const vector < T > & vectorB ) {
     assert ( vectorA.size() == vectorB.size() );
     vector < T > sum;
     sum.reserve ( vectorA.size() );
@@ -92,8 +92,8 @@ vector < T > addVectors ( const vector < T > & vectorA, const vector < T > & vec
     return sum;
 };
 
-template <typename T>
-vector < T > subVectors ( const vector <T> &vectorA, const vector < T > & vectorB ) {
+template < typename T >
+inline vector < T > subVectors ( const vector <T> &vectorA, const vector < T > & vectorB ) {
     assert ( vectorA.size() == vectorB.size() );
     vector < T > diff;
     diff.reserve ( vectorA.size() );
@@ -104,14 +104,14 @@ vector < T > subVectors ( const vector <T> &vectorA, const vector < T > & vector
 };
 
 // This is not the typical "cross" product
-template <typename T>
-T cross2 ( const vector <T> &vectorA, const vector < T > & vectorB ) {
+template < typename T >
+inline T cross2 ( const vector <T> &vectorA, const vector < T > & vectorB ) {
     assert (vectorA.size() == 2 && vectorB.size() == 2 );
     return vectorA[0] * vectorB[1] - vectorA[1] * vectorB[0];
 };
 
-template <typename T>
-vector < vector <T> > invertVM ( const vector < vector < T > > & vMtx ) {
+template < typename T >
+inline vector < vector <T> > invertVM ( const vector < vector < T > > & vMtx ) {
     assert(isSquare(vMtx));
     
     Eigen::Matrix < T, Eigen::Dynamic, Eigen::Dynamic > m;
@@ -129,8 +129,8 @@ vector < vector <T> > invertVM ( const vector < vector < T > > & vMtx ) {
     return vMtxR;
 };
 
-template <typename T>
-vector < T > invertV ( const vector < T > & vMtx ) {
+template < typename T >
+inline vector < T > invertV ( const vector < T > & vMtx ) {
     int size = std::sqrt ( static_cast<int> (vMtx.size()) );
     vector < vector <T> > tmp ( size, vector <T> (size) );
 
@@ -145,8 +145,8 @@ vector < T > invertV ( const vector < T > & vMtx ) {
     return result;
 };
 
-template <typename T>
-vector < vector < T > > diagVM ( const vector < T > & vct ) {
+template < typename T >
+inline vector < vector < T > > diagVM ( const vector < T > & vct ) {
     assert( vct.size() != 0 );
     vector < vector<T> > vctdiag(vct.size(), vector<T>(vct.size(), T(0.0)));
 
@@ -155,8 +155,8 @@ vector < vector < T > > diagVM ( const vector < T > & vct ) {
     return vctdiag;
 };
 
-template <typename T>
-vector < T > diagV ( const vector < T > & vct ) {
+template < typename T >
+inline vector < T > diagV ( const vector < T > & vct ) {
     assert( vct.size() != 0 );
     
     int length = static_cast<int>( vct.size() );
@@ -169,8 +169,8 @@ vector < T > diagV ( const vector < T > & vct ) {
     return vctdiag;
 };
 
-template <typename T>
-vector< vector<T> > transposeVec ( const vector < vector < T > > & vMtx ) {
+template < typename T >
+inline vector< vector < T > > transposeVec ( const vector < vector < T > > & vMtx ) {
     assert( vMtx.size() != 0
             && vMtx[0].size() != 0 );
 
@@ -186,22 +186,22 @@ vector< vector<T> > transposeVec ( const vector < vector < T > > & vMtx ) {
     return vTran;
 };
 
-template <typename T>
-T sumVector ( const vector < T > & vct ) {
-    Eigen::Matrix <T, Eigen::Dynamic, 1> v;
+template < typename T >
+inline T sumVector ( const vector < T > & vct ) {
+    Eigen::Matrix < T, Eigen::Dynamic, 1 > v;
     v.resize(vct.size(), 1);
     FORI(v.rows()) v(i, 0) = vct[i];
     
     return v.sum();
 };
 
-template <typename T>
-T sumVectorM ( const vector < vector < T > > & vct ) {
+template < typename T >
+inline T sumVectorM ( const vector < vector < T > > & vct ) {
     int row = vct.size();
     int col = vct[0].size();
 
     T sum = T(0);
-    Eigen::Matrix <T, Eigen::Dynamic, 1> v;
+    Eigen::Matrix < T, Eigen::Dynamic, 1 > v;
     v.resize ( row * col, 1 );
 
     FORIJ ( row, col )
@@ -210,9 +210,9 @@ T sumVectorM ( const vector < vector < T > > & vct ) {
     return v.sum();
 };
 
-template <typename T>
-void scaleVector ( vector < T > & vct, const T scale ) {
-    Eigen::Matrix <T, Eigen::Dynamic, 1> v;
+template < typename T >
+inline void scaleVector ( vector < T > & vct, const T scale ) {
+    Eigen::Matrix < T, Eigen::Dynamic, 1 > v;
     v.resize(vct.size(), 1);
     
     FORI(vct.size()) v(i,0) = vct[i];
@@ -223,9 +223,9 @@ void scaleVector ( vector < T > & vct, const T scale ) {
     return;
 };
 
-template <typename T>
-void scaleVectorMax ( vector < T > & vct ) {
-    Eigen::Matrix <T, Eigen::Dynamic, 1> v;
+template < typename T >
+inline void scaleVectorMax ( vector < T > & vct ) {
+    Eigen::Matrix < T, Eigen::Dynamic, 1 > v;
     v.resize(vct.size(), 1);
     
     FORI(vct.size()) v(i,0) = vct[i];
@@ -236,9 +236,9 @@ void scaleVectorMax ( vector < T > & vct ) {
     return;
 };
 
-template <typename T>
-void scaleVectorMin ( vector < T > & vct ) {
-    Eigen::Matrix <T, Eigen::Dynamic, 1> v;
+template < typename T >
+inline void scaleVectorMin ( vector < T > & vct ) {
+    Eigen::Matrix < T, Eigen::Dynamic, 1 > v;
     v.resize(vct.size(), 1);
     
     FORI(vct.size()) v(i,0) = vct[i];
@@ -249,9 +249,9 @@ void scaleVectorMin ( vector < T > & vct ) {
     return;
 };
 
-template <typename T>
-void scaleVectorD ( vector < T > & vct ) {
-    Eigen::Matrix <T, Eigen::Dynamic, 1> v;
+template < typename T >
+inline void scaleVectorD ( vector < T > & vct ) {
+    Eigen::Matrix < T, Eigen::Dynamic, 1 > v;
     v.resize(vct.size(), 1);
 
     FORI(v.rows()) v(i,0) = vct[i];
@@ -260,9 +260,9 @@ void scaleVectorD ( vector < T > & vct ) {
     return;
 };
 
-template <typename T>
-vector<T> mulVectorElement ( const vector < T > & vct1,
-                             const vector < T > & vct2 ) {
+template < typename T >
+inline vector<T> mulVectorElement ( const vector < T > & vct1,
+                                    const vector < T > & vct2 ) {
     assert(vct1.size() == vct2.size());
     
     Eigen::Array <T, Eigen::Dynamic, 1> a1, a2;
@@ -281,9 +281,9 @@ vector<T> mulVectorElement ( const vector < T > & vct1,
     return vct3;
 };
 
-template <typename T>
-vector<T> divVectorElement ( const vector < T > & vct1,
-                             const vector < T > & vct2 ) {
+template < typename T >
+inline vector < T > divVectorElement (  const vector < T > & vct1,
+                                        const vector < T > & vct2 ) {
     assert(vct1.size() == vct2.size());
 
     vector<T> vct2D (vct2.size(), T(1.0));
@@ -295,8 +295,8 @@ vector<T> divVectorElement ( const vector < T > & vct1,
     return mulVectorElement ( vct1, vct2D );
 };
 
-template <typename T>
-vector < T > mulVector ( vector < T > vct1, vector < T > vct2, int k = 3 )
+template < typename T >
+inline vector < T > mulVector ( vector < T > vct1, vector < T > vct2, int k = 3 )
 {
     int rows = ( static_cast < int > ( vct1.size() ) ) / k;
     int cols = ( static_cast < int > ( vct2.size() ) ) / k;
@@ -320,9 +320,9 @@ vector < T > mulVector ( vector < T > vct1, vector < T > vct2, int k = 3 )
     return vct3;
 };
 
-template <typename T>
-vector < vector < T > > mulVector ( const vector < vector < T > > & vct1,
-                                    const vector < vector < T > > & vct2 ) {
+template < typename T >
+inline vector < vector < T > > mulVector (  const vector < vector < T > > & vct1,
+                                            const vector < vector < T > > & vct2 ) {
     assert(vct1.size() != 0 && vct2.size() != 0);
 
     Eigen::Matrix <T, Eigen::Dynamic, Eigen::Dynamic> m1, m2, m3;
@@ -342,9 +342,9 @@ vector < vector < T > > mulVector ( const vector < vector < T > > & vct1,
     return vct3;
 };
 
-template <typename T>
-vector < T > mulVector ( const vector < vector < T > > & vct1,
-                         const vector < T > & vct2 ) {
+template < typename T >
+inline vector < T > mulVector ( const vector < vector < T > > & vct1,
+                                const vector < T > & vct2 ) {
     assert ( vct1.size() != 0 &&
              (vct1[0]).size() == vct2.size() );
     
@@ -365,17 +365,17 @@ vector < T > mulVector ( const vector < vector < T > > & vct1,
     return vct3;
 };
 
-template <typename T>
-vector < T > mulVector ( const vector < T > & vct1,
-                         const vector < vector < T > > & vct2 ) {
+template < typename T >
+inline vector < T > mulVector ( const vector < T > & vct1,
+                                const vector < vector < T > > & vct2 ) {
     return mulVector (vct2, vct1);
 };
 
-template<typename T>
-T * mulVectorArray ( T * data,
-                     const uint32_t total,
-                     const uint8_t dim,
-                     const vector < vector < double > > & vct ) {
+template < typename T >
+inline T * mulVectorArray ( T * data,
+                            const uint32_t total,
+                            const uint8_t dim,
+                            const vector < vector < double > > & vct ) {
     assert(vct.size() == dim
            && isSquare(vct));
     
@@ -419,9 +419,9 @@ T * mulVectorArray ( T * data,
     return data;
 };
 
-template<typename T>
-vector < vector<T> > solveVM ( const vector < vector < T > > & vct1,
-                               const vector < vector < T > > & vct2 ) {
+template < typename T >
+inline vector < vector<T> > solveVM ( const vector < vector < T > > & vct1,
+                                      const vector < vector < T > > & vct2 ) {
     
     Eigen::Matrix <T, Eigen::Dynamic, Eigen::Dynamic> m1, m2, m3;
     m1.resize(vct1.size(), vct1[0].size());
@@ -441,8 +441,8 @@ vector < vector<T> > solveVM ( const vector < vector < T > > & vct1,
     return vct3;
 };
 
-template <typename T>
-T calSSE ( const vector <T> & tcp, const vector <T> & src ) {
+template < typename T >
+inline T calSSE ( const vector <T> & tcp, const vector <T> & src ) {
     assert(tcp.size() == src.size());
     vector<T> tmp(src.size());
     
@@ -453,8 +453,8 @@ T calSSE ( const vector <T> & tcp, const vector <T> & src ) {
     return sum;
 };
 
-template <typename T>
-int findIndexInterp1 ( T val, const vector <T> & x, int size ) {
+template < typename T >
+inline int findIndexInterp1 ( T val, const vector <T> & x, int size ) {
     T dist = T(1e9);
     int index = -1;
     
@@ -469,10 +469,10 @@ int findIndexInterp1 ( T val, const vector <T> & x, int size ) {
     return index;
 };
 
-template <typename T>
-vector <T> interp1DLinear ( const vector <int> & X0,
-                            const vector <int> & X1,
-                            const vector <T> & Y0 ) {
+template < typename T >
+inline vector < T > interp1DLinear ( const vector <int> & X0,
+                                     const vector <int> & X1,
+                                     const vector <T> & Y0 ) {
     assert (X0.size() == Y0.size());
     
     vector <T> slope, intercept, Y1;
@@ -499,8 +499,8 @@ vector <T> interp1DLinear ( const vector <int> & X0,
     return Y1;
 };
 
-template<typename T>
-vector < T > xyToXYZ ( const vector < T > &xy )
+template < typename T >
+inline vector < T > xyToXYZ ( const vector < T > &xy )
 {
     vector < T > XYZ (3);
     XYZ[0] = xy[0];
@@ -510,8 +510,8 @@ vector < T > xyToXYZ ( const vector < T > &xy )
     return XYZ;
 };
 
-template<typename T>
-vector < T > uvToxy ( const vector < T > &uv )
+template < typename T >
+inline vector < T > uvToxy ( const vector < T > &uv )
 {
     T xyS[] = { 3.0, 2.0 };
     vector < T > xyScale ( xyS, xyS + sizeof(xyS)/sizeof(T) );
@@ -523,14 +523,14 @@ vector < T > uvToxy ( const vector < T > &uv )
     return xyScale;
 };
 
-template<typename T>
-vector < T > uvToXYZ ( const vector < T > &uv )
+template < typename T >
+inline vector < T > uvToXYZ ( const vector < T > &uv )
 {
     return xyToXYZ ( uvToxy ( uv ) );
 };
 
-template<typename T>
-vector < T > XYZTouv ( const vector < T > &XYZ )
+template < typename T >
+inline vector < T > XYZTouv ( const vector < T > &XYZ )
 {
     T uvS[] = { 4.0, 6.0 };
     T slice[] = { XYZ[0], XYZ[1] };
@@ -545,8 +545,8 @@ vector < T > XYZTouv ( const vector < T > &XYZ )
     return uvScale;
 };
 
-template<typename T>
-vector < vector < T > > getCAT ( const vector < T > & src,
+template < typename T >
+inline vector < vector < T > > getCAT ( const vector < T > & src,
                                  const vector < T > & des ) {
     assert(src.size() == des.size());
     
@@ -565,8 +565,8 @@ vector < vector < T > > getCAT ( const vector < T > & src,
     return vkm;
 }
 
-template<typename T>
-vector < vector<T> > XYZtoLAB ( const vector < vector < T > > & XYZ ) {
+template < typename T >
+inline vector < vector < T > > XYZtoLAB ( const vector < vector < T > > & XYZ ) {
     assert(XYZ.size() == 190);
     T add = T(16.0/116.0);
     
@@ -594,9 +594,9 @@ vector < vector<T> > XYZtoLAB ( const vector < vector < T > > & XYZ ) {
     return outCalcLab;
 };
 
-template<typename T>
-vector< vector<T> > getCalcXYZt ( const vector < vector < T > > & RGB,
-                                  const T B[6] ) {
+template < typename T >
+inline vector< vector < T > > getCalcXYZt ( const vector < vector < T > > & RGB,
+                                            const T B[6] ) {
     assert( RGB.size() == 190 );
     
     vector < vector<T> > BV (3, vector < T >(3));
