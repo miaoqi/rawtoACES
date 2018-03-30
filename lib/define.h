@@ -362,8 +362,20 @@ inline void lowerCase ( char * tex )
 {
     string tmp(tex);
     
-    FORI(tmp.size())
+    FORI ( tmp.size() )
         tex[i] = tolower(tex[i]);
+};
+
+// Function to covert upper-case to lower-case (const)
+inline const char * lowerCaseC ( const char * tex )
+{
+    string tmp(tex);
+    char * output = (char *)( malloc ( sizeof(char) * tmp.size() ) );
+    
+    FORI ( tmp.size() )
+        output[i] = tolower(tex[i]);
+
+    return ( const char * ) output;
 };
 
 // Function to check if a value is numeric

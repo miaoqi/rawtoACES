@@ -799,7 +799,7 @@ int AcesRender::fetchCameraSenPath( const libraw_iparams_t & P )
             
             if ( fn.find(".json") == std::string::npos )
                 continue;
-            readC = _idt->loadCameraSpst( fn, P.make, P.model );
+            readC = _idt->loadCameraSpst ( fn, lowerCaseC ( P.make ), lowerCaseC ( P.model ) );
             if ( readC ) return 1;
         }
     }
@@ -1040,8 +1040,9 @@ int AcesRender::postprocessRaw ( ) {
 #define P  _rawProcessor->imgdata.idata
 #define C   _rawProcessor->imgdata.color
 
-    if ( _opts.verbosity > 1 )
+    if ( _opts.verbosity > 1 ) {
         printf ( "The camera has been identified as a %s %s ...\n", P.make, P.model );
+    }
     
     switch ( _opts.wb_method ) {
     // 0
